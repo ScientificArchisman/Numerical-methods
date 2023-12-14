@@ -53,4 +53,4 @@ def visualize_search(graph, order, title, pos):
 pos = nx.spring_layout(G)
 print(f"Starting node: {node1}, Target node: {node2}")
 order = dfs(graph=G, start_node=node1, target_node=node2)
-visualize_search(G, order, "DFS", pos)
+visualize_search(G, order, f"DFS, start = {node1}, target = {node2}", pos)
