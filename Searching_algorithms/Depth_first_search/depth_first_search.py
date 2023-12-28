@@ -6,7 +6,7 @@ plt.style.use(["science", "notebook", "grid"])
 
 
 edge_list = []
-for _ in range(100):
+for _ in range(150):
     node1, node2 = np.random.randint(low = 0, high = 50, size = 2)
     edge_list.append((node1, node2))
 
@@ -29,10 +29,12 @@ def dfs(graph, start_node, target_node, visited=None):
     return None
 
 def visualize_search(graph, order, title, pos):
+    plt.figure(figsize = (15, 8))
     plt.title(title, fontsize = 15, fontweight = "bold")
     visited = []
     for idx, node in enumerate(order):
         plt.clf()
+        title = f"DFS, start = {node1}, target = {node2}, current node = {node}"
         plt.title(title, fontsize = 15, fontweight = "bold")
         visited.append(node)
         colors = []
@@ -42,6 +44,7 @@ def visualize_search(graph, order, title, pos):
             else:
                 colors.append("g")
         nx.draw(G, pos, with_labels = True, 
+                node_size=[v * 5 for v in graph.nodes()], 
                 node_color = colors)
         plt.draw()
         plt.pause(0.5)
@@ -50,7 +53,7 @@ def visualize_search(graph, order, title, pos):
 
 
 
-pos = nx.spring_layout(G)
+pos = nx.spring_layout(G, scale=10)
 print(f"Starting node: {node1}, Target node: {node2}")
 order = dfs(graph=G, start_node=node1, target_node=node2)
 visualize_search(G, order, f"DFS, start = {node1}, target = {node2}", pos)
