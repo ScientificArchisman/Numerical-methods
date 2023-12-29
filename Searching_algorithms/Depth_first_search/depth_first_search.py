@@ -28,6 +28,7 @@ def dfs(graph, start_node, target_node, visited=None):
                 return path
     return None
 
+
 def visualize_search(graph, order, title, pos):
     plt.figure(figsize = (15, 8))
     plt.title(title, fontsize = 15, fontweight = "bold")
