@@ -72,11 +72,11 @@ def Strassen_multiply(matrix1: List[List[Union[int, float]]], matrix2: List[List
     C11 = matrix_add(matrix_subtract(matrix_add(P, S), T), V)
     C12 = matrix_add(R, T)
     C21 = matrix_add(Q, S)
-    c22 = matrix_add(matrix_subtract(matrix_add(P, R), Q), U)
+    C22 = matrix_add(matrix_subtract(matrix_add(P, R), Q), U)
 
     # Combine submatrices into one result matrix
     top = [C11[i] + C12[i] for i in range(len(C11))]
-    bottom = [C21[i] + c22[i] for i in range(len(C21))]
+    bottom = [C21[i] + C22[i] for i in range(len(C21))]
     return top + bottom
 
 
